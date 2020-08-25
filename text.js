@@ -19,10 +19,22 @@ const filters = {
             return letter.toLowerCase()
         }
     },
-    funky() {
-        
+    funky(letter) {
+        // first check if there's a funky variant for this case
+        let funkyLetter = funkyLetters[letter];
+        if (funkyLetter) {
+            return funkyLetter
+        }
+        // if there isn't check if there' a lower case version, 
+        funkyLetter = funkyLetters[letter.toLowerCase()]
+        if (funkyLetter) {
+            return funkyLetter
+        }
+        // if there is nothing return the regular glyph
+        return letter
+
     },
-    unable() {
+    unable(letter) {
         
     },
 };
