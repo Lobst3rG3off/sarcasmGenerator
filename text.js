@@ -35,8 +35,12 @@ const filters = {
 
     },
     unable(letter) {
-        
-    },
+        const random = Math.floor(Math.random() * 3);
+        if (letter === ' ' && random === 2) {
+          return '...';
+        }
+        return letter;
+      },
 };
 
 
@@ -49,4 +53,12 @@ function transformText(text) {
 
 
 
-textarea.addEventListener('input',e => transformText(e.target.value))
+
+  textarea.addEventListener('input', e => transformText(e.target.value));
+
+  filterInputs.forEach(input =>
+    input.addEventListener('input', () => {
+      transformText(textarea.value);
+    })
+  );
+  
